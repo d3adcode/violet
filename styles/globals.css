@@ -1,16 +1,57 @@
-html,
 body {
-  padding: 0;
+  margin: 0
+}
+
+html {
+  font-size: 13px;
+}
+
+div.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+div.document {
+  height: calc(100vh - 15px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+div.line {
+  display: flex;
+  flex-direction: row;
+}
+
+div.lineNumber {
+  width: 2rem;
+  background-color: grey;
+  color: white;
+}
+
+div.console {
+  background-color: black;
+  color: white;
+  bottom: 0;
+  height: 15px;
+  overflow: hidden;
+}
+
+span.cursor {
+  background-color: black;
+  color: white;
+}
+
+span.selection {
+  background-color: black;
+  color: red;
+}
+
+pre {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
+span.preview {
+  background-color: green;
+  color: black;
 }
