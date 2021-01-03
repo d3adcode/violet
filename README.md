@@ -1,34 +1,66 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Summary
+Violet (vi-lite) is a sample text editor inspired by vim's command mode. It was written in react as a learning exercise. There is only a single mode (command) where commands are typed in the console.
 
-## Getting Started
+Commands are standalone javascript files that are imported into the console component. Adding an additional command is as simple as adding the new js file under the scripts directory and appending it to the SCRIPTS object exported by scripts/scripts.js.
 
-First, run the development server:
+A script follows the following template:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+	import PubSub from 'pubsub-js'
+	import VString from '../includes/vstring'
+	import { COMMON, TOPICS } from '../includes/constants'
+	import Document from '../components/document'
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+	const <name> = {
+	    execute: function(data) {...},
+	    dictionary: [] or function,
+	    preview: function(data) {...}
+	}
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+	export default <name>         
+                                                                                                                                   
+                                                                                                                              
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Script Attributes
+Execute: The function associated with this script.
+Dictionary: This is used for autocomplete to help Violet anticipate possible arguments for the given command.
+Preview: This function can be used to set the preview attribute for the document. The preview attribute will highlight the changes that the given command will perform when executed.
 
-## Learn More
+## Executing commands
+Commands are executed by pressing [ENTER]. The first word in the console will become the issued command and the console will execute the 'execute' function of the script. Anything that follows the first word is sent as the execute functions data argument (obtainable via data.text).
 
-To learn more about Next.js, take a look at the following resources:
+Additional options to control script behavior must follow at the end of the input and be preceded by '--'. Options will be passed to the script via data.options.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Example commands:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+	>>search myWord --reverse
+	>>goto end
+	>>goto lineEnd
+	>>insert my text
+	>>next word
+	>>open /home/<user>/test.txt
 
-## Deploy on Vercel
+The Document component has a static getDocument function enabling the current document to be fetched within scripts. The document text can be modified directly via the document objects text attribute. When the document object has been modified successfully, calling the refresh method will trigger the document's render method.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Example:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+	let document = Document.getDocument()
+	document.text = 'This is the new text'
+	document.refresh()
+
+
+## Commands
+insert: insert value at cursor
+search: search for value [options: --reverse]
+goto: relocate cursor to subjects [valid subjects: start, end, lineStart, lineEnd]
+last: find previous occurrence of given pattern [valid nouns: word]
+next: find next occurrence of given pattern [valid nouns: word]
+open: open the given file [notes: needs full path and only opens on hosting server]
+save: save file to given filename
+remove: removes character at current cursor
+
+## Demo
+To follow shortly. The demo will open a copy of the console.js src file so the editor's features can be demonstrated.
+
+## Further information:
+More information about additional features such as autocomplete and helper utilities to come later.
