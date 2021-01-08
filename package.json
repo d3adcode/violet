@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p $PORT",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "cypress:open": "cypress open"
   },
   "dependencies": {
@@ -21,5 +21,8 @@
     "cypress": "^4.2.0",
     "cypress-image-snapshot": "^3.1.1",
     "cypress-plugin-tab": "^1.0.5"
+  },
+  "engines": {
+    "node": "14.5.3"
   }
 }
