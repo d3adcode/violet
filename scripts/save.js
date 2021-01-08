@@ -30,7 +30,8 @@ const save = {
         fetch(url)
         .then((response) => {
           if (response.status !== 200) {
-            console.log(response.text())
+            //console.log(response.text())
+            return ""
           }
         })
       }

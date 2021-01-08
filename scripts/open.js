@@ -20,13 +20,15 @@ const open = {
 
       if (data.text)
         filename = data.text
-      else
-        filename = '/home/dwalter/workspace/projects/node/violet/components/console.js'
+      //else
+        //filename = 'tutorial.md'
+        //filename = '/home/dwalter/workspace/projects/node/violet/scripts/tutorial.md'
+        //filename = '/home/dwalter/workspace/projects/node/violet/components/console.js'
 
       fetch(`/api/open?filename=${filename}`)
       .then((response) => {
         if (response.status !== 200) {
-          console.log(response.text())
+          //console.log(response.text())
           return ""
         }
         return response.text()
@@ -53,12 +55,12 @@ const open = {
       partial = text.slice(text.lastIndexOf('/')+1)
     }
 
-    console.log(path)
-    console.log(partial)
+    //console.log(path)
+    //console.log(partial)
 
     let res = await fetch(`/api/list?path=${path}`)
     if (res.status !== 200) {
-      console.log(await res.text())
+      //console.log(await res.text())
       return []
     }
     return JSON.parse(await res.text())
@@ -79,7 +81,7 @@ const open = {
       partial,lastWord,dictionary
     ).substring(partial.length)
 
-    console.log(`suggestion[${suggestion}]`)
+    //console.log(`suggestion[${suggestion}]`)
 
     this.lastSuggestion = suggestion
     return suggestion

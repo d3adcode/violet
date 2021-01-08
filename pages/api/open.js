@@ -4,7 +4,8 @@ import fs from 'fs'
 // about api resolving without returning a response
 export default (req,res) => new Promise(
   async resolve => {
-    fs.readFile(req.query.filename,'utf8',function(err,contents) {
+    //fs.readFile(req.query.filename,'utf8',function(err,contents) {
+    fs.readFile(process.cwd()+'/pages/api/tutorial.md','utf8',function(err,contents) {
       let status = 200
       if (err) {
         status = 500

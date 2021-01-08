@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-unfetch'
+//import fetch from 'isomorphic-unfetch'
 import Line from './line'
 import PubSub from 'pubsub-js'
 import React, { Component } from 'react'
@@ -20,9 +20,22 @@ class Document extends Component {
     }
 
     this.preview = ""
-    this.buffer = [""]
+    //this.buffer = [""]
+    //this.filename = ""
+    // hardcoded tutorial for demo
+    this.buffer = (`Try typing the following commands to get an idea how violet works.
+At any point if you wish to reset to the default state just type 'open <Enter>'.
+During this demo, open is hardcoded to load this static file.
+Pressing <tab> will attempt to complete the command from your given input.
+Pressing <Enter> by itself will repeat the previous command.
 
-    this.filename = ""
+>>search myWord --reverse
+>>goto end
+>>goto lineEnd
+>>insert my text
+>>next word
+>>open`).split(COMMON.NEWLINE)
+    this.filename = "tutorial.md"
 
     this.state = {
       buffer: this.buffer,
@@ -63,7 +76,6 @@ class Document extends Component {
   }
 
   refresh() {
-    console.log(`document.filename[${this.filename}]`)
     this.setState({
       buffer: this.buffer,
       cursor: this.cursor,
