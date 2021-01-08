@@ -11,13 +11,13 @@
   "dependencies": {
     "next": "10.0.4",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
-  },
-  "devDependencies": {
+    "react-dom": "17.0.1",
     "isomorphic-unfetch": "^3.1.0",
     "mousetrap": "^1.6.5",
     "pubsub-js": "^1.8.0",
-    "babel-plugin-contracts": "^2.0.0",
+    "babel-plugin-contracts": "^2.0.0"
+  },
+  "devDependencies": {
     "cypress": "^4.2.0",
     "cypress-image-snapshot": "^3.1.1",
     "cypress-plugin-tab": "^1.0.5"
