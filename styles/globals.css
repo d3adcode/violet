@@ -55,3 +55,8 @@ span.preview {
   background-color: green;
   color: black;
 }
+
+/* get rid of the selected outline in chrome */
+*:focus {
+  outline: none;
+}

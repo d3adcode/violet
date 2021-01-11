@@ -129,7 +129,8 @@ class Line extends Component {
     if (this.newStart)
       preview = <span className="preview">{this.props.preview}</span>
 
-    let lineNumber = <div className="lineNumber">{this.props.index}</div>
+    //let lineNumber = <div className="lineNumber">{this.props.index}</div>
+    let lineNumber = ""
 
     return (
       <div ref={this.focusReference} className="line" tabIndex="-1">
