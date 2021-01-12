@@ -21,6 +21,7 @@ div.document {
 div.line {
   display: flex;
   flex-direction: row;
+  padding-left: 1rem;
 }
 
 div.lineNumber {
