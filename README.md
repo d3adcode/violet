@@ -10,21 +10,19 @@ Commands are standalone javascript files that are imported into the console comp
 
 A script follows the following template:
 
-  import PubSub from 'pubsub-js'
-  import VString from '../includes/vstring'
-  import { COMMON, TOPICS } from '../includes/constants'
-  import Document from '../components/document'
+ import PubSub from 'pubsub-js'
+ import VString from '../includes/vstring'
+ import { COMMON, TOPICS } from '../includes/constants'
+ import Document from '../components/document'
 
 
-  const <name> = {
-      execute: function(data) {...},
-      dictionary: [] or function,
-      preview: function(data) {...}
-  }
+ const <name> = {
+     execute: function(data) {...},
+     dictionary: [] or function,
+     preview: function(data) {...}
+ }
 
-  export default <name>         
-                                                                                                                                   
-                                                                                                                              
+ export default <name>         
 
 ## Script Attributes
 Execute: The function to execute.
