@@ -10,17 +10,19 @@ Commands are standalone javascript files that are imported into the console comp
 
 A script follows the following template:
 
- import PubSub from 'pubsub-js'
- import VString from '../includes/vstring'
- import { COMMON, TOPICS } from '../includes/constants'
- import Document from '../components/document'
+```
+import PubSub from 'pubsub-js'
+import VString from '../includes/vstring'
+import { COMMON, TOPICS } from '../includes/constants'
+import Document from '../components/document'
 
 
- const <name> = {
-     execute: function(data) {...},
-     dictionary: [] or function,
-     preview: function(data) {...}
- }
+const <name> = {
+    execute: function(data) {...},
+    dictionary: [] or function,
+    preview: function(data) {...}
+}
+```
 
  export default <name>         
 
@@ -37,13 +39,14 @@ Commands are executed by pressing [ENTER]. The first word in the console will be
 Additional options to control script behavior must follow at the end of the input and be preceded by '--'. Options will be passed to the script via data.options.
 
 Example commands:
-
-  >>search myWord --reverse
-  >>goto end
-  >>goto lineEnd
-  >>insert my text
-  >>next word
-  >>open /home/<user>/test.txt
+```
+>>search myWord --reverse
+>>goto end
+>>goto lineEnd
+>>insert my text
+>>next word
+>>open /home/<user>/test.txt
+```
 
 The Document component has a static getDocument function enabling the current document to be fetched within scripts. The document text can be modified directly via the document objects text attribute. When the document object has been modified successfully, calling the refresh method will trigger the document's render method.
 
